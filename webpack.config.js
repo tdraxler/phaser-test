@@ -2,7 +2,10 @@ const path = require("path");
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.join(__dirname, "src", "app.js"),
+    entry: {
+      "scripts/react-app": path.join(__dirname, "src", "app.js"),
+      "scripts/game": path.join(__dirname, "src", "game.js"),
+    },
     module: {
         rules: [
           {
@@ -19,7 +22,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "public"),
-        filename: "bundle.js",
+        filename: "[name].js",
         publicPath: "/"
     }, 
     plugins: [
