@@ -4,12 +4,12 @@ A simple Express server app that serves a simple React web app to the user
 ## How to Run This
 Navigate to a directory with a terminal and clone this repo:
 ```
-git clone https://github.com/tdraxler/react-express-template.git
+git clone https://github.com/tdraxler/phaser-test.git
 ```
 
 After that, run this sequence of commands to get everything set up:
 ```
-cd react-express-template
+cd phaser-test
 npm install
 npm run build
 ```
@@ -37,7 +37,7 @@ Now when you make any changes in the front end or back end codes, webpack will r
 
 `app.js` is the main entry point for the React part of this app.
 `server.js` contains the server/Express code.
-`bundle.js` is generated after you run `npm run build`, but there's no need to edit it in any way. It's simply the transpiled (ES6 -> ES5) JavaScript code from the `src` directory bundled up into one file.
+The scripts in `public/scripts` are generated after you run `npm run build`, but there's no need to edit it in any way. It's simply the transpiled (ES6 -> ES5) JavaScript code from the `src` directory bundled up into a few files.
 
 ## Credits
 I followed the tutorial here and changed the run/build scripts (and a few other minor things) to fit my needs better:
