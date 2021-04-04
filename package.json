@@ -1,7 +1,7 @@
 {
-  "name": "react-express-template",
+  "name": "phaser-test",
   "version": "1.0.0",
-  "description": "A simple Express server app that serves a simple React app",
+  "description": "A simple Phaser experiment",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",

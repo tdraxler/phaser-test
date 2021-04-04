@@ -4,5 +4,5 @@ const testPhrase = "Hello World!";
 
 ReactDOM.render(
   <div>{testPhrase}</div>,
-  document.getElementById('app')
+  document.getElementById('react-part')
 );

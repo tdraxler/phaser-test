@@ -2,13 +2,14 @@ import Phaser from 'phaser';
 
 console.log("Game script loaded successfully!");
 
-var config = {
+let config = {
   type: Phaser.AUTO,
   width: 400,
   height: 300,
   scale: {
-    mode: Phaser.Scale.ZOOM_2X
+    mode: Phaser.Scale.FIT
   },
+  pixelArt: true,
   physics: {
       default: 'arcade',
       arcade: {
@@ -17,13 +18,14 @@ var config = {
   },
   scene: {
       preload: preload,
-      create: create
+      create: create,
+      update: update
   }
 };
 
-var game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
 
-function preload ()
+function preload()
 {
   this.load.setBaseURL('/');
 
@@ -32,7 +34,7 @@ function preload ()
   this.load.image('red', 'assets/particle.png');
 }
 
-function create ()
+function create()
 {
   this.add.image(200, 150, 'sky');
 
@@ -51,4 +53,9 @@ function create ()
   logo.setCollideWorldBounds(true);
 
   emitter.startFollow(logo);
+}
+
+function update()
+{
+
 }
