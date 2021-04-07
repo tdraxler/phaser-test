@@ -1,3 +1,6 @@
+// Sources
+// https://stackabuse.com/phaser-3-and-tiled-building-a-platformer/
+
 import Phaser from 'phaser';
 
 console.log("Game script loaded successfully!");
@@ -29,30 +32,33 @@ function preload()
 {
   this.load.setBaseURL('/');
 
-  this.load.image('sky', 'assets/background.png');
-  this.load.image('logo', 'assets/title.png');
-  this.load.image('red', 'assets/particle.png');
+  this.load.image('tiles', 'assets/tileset.png');
+  this.load.spritesheet(
+    'player',
+    'assets/player.png',
+    {
+      frameWidth: 16,
+      frameHeight: 16
+    }
+  );
+  this.load.tilemapTiledJSON('assets/map1');
 }
 
 function create()
 {
-  this.add.image(200, 150, 'sky');
 
-  var particles = this.add.particles('red');
 
-  var emitter = particles.createEmitter({
-      speed: 100,
-      scale: { start: 1, end: 0 },
-      blendMode: 'ADD'
-  });
+  const tilemap = this.make.tilemap({ key: 'assets/map1' });
 
-  var logo = this.physics.add.image(200, 50, 'logo');
+  const tileset = tilemap.addTilesetImage('tileset', 'tiles');
 
-  logo.setVelocity(100, 200);
-  logo.setBounce(1, 1);
-  logo.setCollideWorldBounds(true);
+  tilemap.createStaticLayer('Ground', tileset);
+  tilemap.createStaticLayer('Above1', tileset);
+  tilemap.createStaticLayer('Above2', tileset);
 
-  emitter.startFollow(logo);
+  // const tileset = map.addTilesetImage('tileset', 'tiles');
+
+  //const test_view = map.createStaticLayer('Platforms', tileset, 0, 200);
 }
 
 function update()
