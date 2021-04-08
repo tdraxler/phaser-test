@@ -79,23 +79,49 @@ export class Player extends Phaser.GameObjects.Sprite {
     update() {
 
         // Check keyboard input
-        if (this.keyUp.isDown) {
-            this.getBody().setVelocity(0, -64);
-            this.currentDir = 1;
-            this.anims.play("walk-up", true);
-        } else if (this.keyLeft.isDown) {
-            this.getBody().setVelocity(-64, 0);
-            this.currentDir = 3;
-            this.anims.play("walk-left", true);
-        } else if (this.keyDown.isDown) {
-            this.getBody().setVelocity(0, 64);
+        let anythingPressed = false;
+        let xSpeed = 0, ySpeed = 0;
+        if (this.keyDown.isDown) {
+            ySpeed = 64;
             this.currentDir = 0;
-            this.anims.play("walk-down", true);
-        } else if (this.keyRight.isDown) {
-            this.getBody().setVelocity(64, 0);
+            anythingPressed = true;
+        }
+        if (this.keyUp.isDown) {
+            ySpeed = -64;
+            this.currentDir = 1;
+            anythingPressed = true;
+        }
+        if (this.keyRight.isDown) {
+            xSpeed = 64;
             this.currentDir = 2;
-            this.anims.play("walk-right", true);
-        } else {
+            anythingPressed = true;
+        }
+        if (this.keyLeft.isDown) {
+            xSpeed = -64;
+            this.currentDir = 3;
+            anythingPressed = true;
+        }
+
+
+        
+        if (anythingPressed) {
+            this.getBody().setVelocity(xSpeed, ySpeed);
+            switch (this.currentDir) {
+                case 0: // down
+                    this.anims.play("walk-down", true);
+                    break;
+                case 1: // up
+                    this.anims.play("walk-up", true);
+                    break;
+                case 2: // right
+                    this.anims.play("walk-right", true);
+                    break;
+                default: // left
+                    this.anims.play("walk-left", true);
+                    break;
+            }
+        }
+        else {
             switch (this.currentDir) {
                 case 0: // down
                     this.anims.play("idle-down", true);

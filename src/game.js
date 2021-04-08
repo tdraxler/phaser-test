@@ -9,7 +9,7 @@ console.log("Game script loaded successfully!");
 let config = {
   type: Phaser.AUTO,
   width: 400,
-  height: 288,
+  height: 240,
   scale: {
     mode: Phaser.Scale.FIT
   },
